@@ -142,14 +142,14 @@ def image():
 	else:
 		log('Pasteboard empty')
 
-parser = argparse.ArgumentParser(description='Scrub pasteboard of all but allowed types.')
-parser.add_argument('-V', '--version', action='version', version='pbimg/0.1a')
-parser.add_argument('-I', '--info', action='store_const', dest='mode', const='info'
-	help='show info about pasteboard, but do not modify it (default)'),
+parser = argparse.ArgumentParser(description='manipulate the MacOS pasteboard')
+parser.add_argument('-V', '--version', action='version', version='pbtool/0.1a')
+parser.add_argument('-I', '--info', action='store_const', dest='mode', const='info',
+	help='show info about pasteboard contents, but do not modify them (default)'),
 parser.add_argument('-i', '--image', action='store_const', dest='mode', const='image',
-	help='permit only images (default)')
+	help='remove non-image data from pasteboard')
 parser.add_argument('-z', '--zap-gremlins', action='store_const', dest='mode', const='zap',
-	help='remove nonprintable characters from text')
+	help='remove nonprintable characters from text data in pasteboard')
 parser.add_argument('-v', '--verbose', action='count', default=0,
 	help='increase verbosity level')
 
